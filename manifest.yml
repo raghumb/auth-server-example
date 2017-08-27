@@ -1,0 +1,9 @@
+---
+applications:
+- name: auth-server
+  host: auth-server-oauth
+  memory: 1024M
+  instances: 1
+  path: target/auth-server-0.0.1-SNAPSHOT.jar
+  
+  

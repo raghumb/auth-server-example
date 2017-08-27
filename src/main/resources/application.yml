@@ -1,0 +1,30 @@
+logging:  
+  level:
+    org.springframework.security: DEBUG
+
+server:
+  port: 8091
+  contextPath: /uaa
+
+eureka:
+  instance:
+    hostname: localhost
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${server.port:8080}}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${vcap.services.discovery-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+      
+
+
+---
+spring:
+  profiles: cloud
+  
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]}
+    nonSecurePort: 80
+    
